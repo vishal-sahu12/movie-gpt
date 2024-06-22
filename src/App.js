@@ -1,11 +1,12 @@
 import logo from './logo.svg';
-import './App.css';
+
+import Login from './Component/Login';
 
 function App() {
   return (
     <div className="App">
-      <h1 className='m-5 text-violet-700 text-4xl font-mono'>Hi this is Vishal Movie-GPT</h1>
-    </div>
+      <Login/>
+   </div>
   );
 }
 
