@@ -4,8 +4,10 @@
 -Create React app
 -Configured Tailwind css
 -Header
+-Routing
 -Login FOrm
 -SignUp Form
+-Form Validation
 
 # Features
 
