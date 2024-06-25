@@ -12,8 +12,8 @@ const firebaseConfig = {
   projectId: "moviegpt-2a1c0",
   storageBucket: "moviegpt-2a1c0.appspot.com",
   messagingSenderId: "373686616134",
-  appId: "1:373686616134:web:98cc750ac4be5f0c16ca47",
-  measurementId: "G-KPH6PK2JTZ"
+  appId: "1:373686616134:web:9ae9543b04b2de7716ca47",
+  measurementId: "G-CPDMS8Q1FR"
 };
 
 // Initialize Firebase
