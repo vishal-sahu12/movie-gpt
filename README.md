@@ -9,6 +9,9 @@
 -SignUp Form
 -Form Validation
 -Firebase SignUpWithEmailandPassword and SignInWithEmailAndPassword
+-Created Redux Store and Make reducer
+-Navigate when user Sign In And SignUp
+
 
 
 # Features

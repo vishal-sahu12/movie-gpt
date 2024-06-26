@@ -4,9 +4,11 @@ import { NETFLIX_BG_URL } from '../utils/constant'
 import {checkValidData} from '../utils/validate'
 import {  createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
+  const navigate = useNavigate();
 
   const [signIn,setSignIn] = useState(true);
 
@@ -35,6 +37,7 @@ const Login = () => {
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
+    navigate("/browse")
     console.log(user);
     // ...
   })
@@ -50,6 +53,7 @@ const Login = () => {
     // Signed in 
     const user = userCredential.user;
     console.log(user);
+    navigate("/browse");
     // ...
   })
   .catch((error) => {
