@@ -8,6 +8,8 @@
 -Login FOrm
 -SignUp Form
 -Form Validation
+-Firebase SignUpWithEmailandPassword and SignInWithEmailAndPassword
+
 
 # Features
 

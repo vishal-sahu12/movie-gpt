@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react'
 import Header from './Header'
 import { NETFLIX_BG_URL } from '../utils/constant'
 import {checkValidData} from '../utils/validate'
+import {  createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from '../utils/firebase';
 
 
 const Login = () => {
@@ -20,9 +22,43 @@ const Login = () => {
 
   const handleButtonClick =() =>{
     
-    const msg = checkValidData(name.current.value,email.current.value,password.current.value);
+    const msg = checkValidData(email.current.value,password.current.value);
+    
     setErrorMsg(msg);
-    console.log(msg);
+    
+    if (msg) {
+      return;
+    }
+    if (!signIn) {
+      //For Sign Up
+      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMsg(errorCode+" "+errorMessage);
+    // ..
+  });
+} else{
+  signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMsg(errorCode+" "+errorMessage);
+  });
+}
+    
     
     }
 
