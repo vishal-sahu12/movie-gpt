@@ -2,9 +2,11 @@ import React, { useRef, useState } from 'react'
 import Header from './Header'
 import { NETFLIX_BG_URL } from '../utils/constant'
 import {checkValidData} from '../utils/validate'
-import {  createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
+import {  createUserWithEmailAndPassword ,signInWithEmailAndPassword,updateProfile} from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {addUser} from "../utils/userSlice"
 
 //PR raise Git learning
 const Login = () => {
@@ -16,7 +18,8 @@ const Login = () => {
 
   const email = useRef();
   const password = useRef();
-  const name = useRef();
+  const names = useRef();
+  const dispatch = useDispatch();
 
   const toggleSignIn = ()=>{
     setSignIn(!signIn);
@@ -37,7 +40,25 @@ const Login = () => {
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-    navigate("/browse")
+
+    updateProfile(user, {
+      displayName: names.current.value, photoURL: "https://avatars.githubusercontent.com/u/68978850?v=4"
+    }).then(() => {
+      const {uid,email,displayName,photoURL} =auth.currentUser;
+      dispatch(addUser({
+        uid:uid,
+        email:email,displayName:displayName,photoURL:photoURL
+      }));
+
+      navigate("/browse")
+      // Profile updated!
+      // ...
+    }).catch((error) => {
+      // An error occurred
+      setErrorMsg(error.message);
+      // ...
+    });
+    
     console.log(user);
     // ...
   })
@@ -48,6 +69,8 @@ const Login = () => {
     // ..
   });
 } else{
+
+  //For Sign In
   signInWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
     // Signed in 
@@ -74,7 +97,7 @@ const Login = () => {
         </div>
         <form onSubmit={(e) => e.preventDefault()} className='absolute w-3/12 rounded-lg bg-black bg-opacity-75 p-10 text-white my-40 mx-auto right-0 left-0'>
         <h2 className='text-4xl font-bold mb-3 '>{signIn ? "Sign In" : "Sign Up"}</h2>
-        {!signIn && <input ref={name} type="text"  placeholder='Name' className='bg-neutral-900 bg-opacity-70 px-2 py-3 w-full mt-3 rounded'/>
+        {!signIn && <input ref={names} type="text"  placeholder='Name' className='bg-neutral-900 bg-opacity-70 px-2 py-3 w-full mt-3 rounded'/>
 
         }
 
