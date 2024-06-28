@@ -13,6 +13,7 @@
 -Created Redux Store and Make reducer
 -Navigate when user Sign In And SignUp
 -SignOut Features Added
+-Update Profile
 
 
 
