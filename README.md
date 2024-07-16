@@ -14,6 +14,12 @@
 -Navigate when user Sign In And SignUp
 -SignOut Features Added
 -Update Profile
+-Bug Fix - Resolve the Login and Browse Page Issue
+-Bug Fix - unsubscribe the onAuthchanged.
+
+-getting data from TMDB API
+-Adding Trailer and Movie Title
+
 
 
 

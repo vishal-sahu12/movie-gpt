@@ -1,25 +1,57 @@
-import React from 'react'
-import { NETFLIX_LOGO,USER_LOGO } from '../utils/constant'
+import {React,useEffect} from 'react'
+import { NETFLIX_LOGO} from '../utils/constant'
 import { auth } from '../utils/firebase'
-import { signOut } from 'firebase/auth'
+import { signOut,onAuthStateChanged } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { addUser,removeUser } from '../utils/userSlice'
 
 const Header = () => {
 
 
 const user = useSelector(store =>store.user);
 const navigate = useNavigate();
+const dispatch = useDispatch();
 
-  const handleSignOut =() =>{
+
+const handleSignOut =() =>{
     
-signOut(auth).then(() => {
-  // Sign-out successful.
-  navigate("/")
-}).catch((error) => {
-  // An error happened.
-});
-  }
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    navigate("/")
+  }).catch((error) => {
+    // An error happened.
+  });
+    }
+
+
+useEffect(()=>{
+ 
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const {uid,email,displayName,photoURL} = user;
+      dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
+      navigate("/browse")
+      // ...
+    } else {
+
+      dispatch(removeUser());
+
+      navigate("/")
+      // User is signed out
+      // ...
+    }
+  });
+
+  //For Unsubscribe when component unmount
+  return ()=> unsubscribe();
+
+},[]);
+
+
+
+
+
 
 
   return (
@@ -29,7 +61,7 @@ signOut(auth).then(() => {
      { user && <div className='flex p-4'>
         <img src={user.photoURL} alt='user logo' className='w-12 h-12 rounded bg-black'>
         </img>
-        <button className= 'font-bold pl-4' onClick={handleSignOut}>SignOut</button>
+        <button className= 'font-bold pl-4 text-white' onClick={handleSignOut}>SignOut</button>
       </div>}
     </div>
   )

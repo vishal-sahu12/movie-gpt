@@ -4,4 +4,15 @@ export const NETFLIX_BG_URL="https://assets.nflxext.com/ffe/siteui/vlv3/a56dc29b
 
 export const USER_LOGO= "https://occ-0-3646-3647.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
 
+export const API_Option = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjODRiMGY4MDVmMzFlNDEyNTUyZjlkMGM5MGJjMDg1ZiIsIm5iZiI6MTcxOTc4MDgxNi43NDIyNTUsInN1YiI6IjY2ODFjNDMzYWRhYjJlODQ5OTM0YWUzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7FyVYs981yY9VX8Aa5LCddabVJd67Y5uIZsWryHykMQ'
+    }
+  };
+  
+export const URL_Trailer ='https://api.themoviedb.org/3/movie/278/videos?language=en-US';
 
+
+ 
