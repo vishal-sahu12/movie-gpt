@@ -12,7 +12,8 @@ export const API_Option = {
     }
   };
   
-export const URL_Trailer ='https://api.themoviedb.org/3/movie/278/videos?language=en-US';
+export const URL_Trailer ='https://api.themoviedb.org/3/movie/';
 
+export const POSTER_URL= "https://image.tmdb.org/t/p/w500/"
 
- 
+export const number = Math.floor(Math.random()*20);

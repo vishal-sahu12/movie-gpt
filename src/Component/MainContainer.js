@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import VideoBackground from './VideoBackground'
 import VideoTitle from './VideoTitle'
+import { number } from '../utils/constant'
 
 const MainContainer = () => {
 
@@ -9,7 +10,7 @@ const MainContainer = () => {
     if (movies=== null) return;
 
 
-    const mainMovie= movies[0];
+    const mainMovie= movies[number];
     const {original_title,overview,id}=mainMovie
   return (
     <div>
