@@ -20,6 +20,10 @@
 -getting data from TMDB API
 -Adding Trailer and Movie Title
 
+-Built Container For Movies
+-Showing,NowPlaying,Popular,Top_rated And Upcoming Movies
+
+
 
 
 
