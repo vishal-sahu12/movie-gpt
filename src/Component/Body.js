@@ -6,6 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../utils/firebase'
 import { useDispatch } from 'react-redux'
 import { addUser, removeUser } from '../utils/userSlice'
+import GPTSearch from './GPTSearch'
 
 
 
@@ -20,6 +21,10 @@ const Body = () => {
     {
       path:"/browse",
       element:<Browse/>
+    },
+    {
+      path:"/search",
+      element:<GPTSearch/>
     }
   ]);
  
