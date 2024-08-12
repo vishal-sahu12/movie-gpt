@@ -15,10 +15,10 @@ const Browse = () => {
   return (
     <div >
       <Header/>
-      {toggles ? <GPTSearch/> : <>
+      {toggles ?( <GPTSearch/>) :( <>
       <MainContainer/>
       <SecondaryContainer/> 
-      </>}  
+      </>)}  
    
      
       </div>

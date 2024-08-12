@@ -7,7 +7,6 @@ import { number } from '../utils/constant';
 const useTrailerVideo = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies)
   const moviesId = movies[number]?.id
-  console.log(moviesId);
 
     const dispatch = useDispatch()
    const getTrailer = async () => {
